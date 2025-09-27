@@ -32,6 +32,13 @@ func (f *fakeRepo) Get() map[string][]model.SensorReading {
 	return f.readings
 }
 
+func (f *fakeRepo) GetSummary() map[string]any {
+	return map[string]any{
+		"overall_average": "overallAverage",
+		"sensor_average":  "sensorAverage",
+	}
+}
+
 func TestCreateSensor(t *testing.T) {
 	testCases := []struct {
 		name           string

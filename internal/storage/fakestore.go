@@ -29,3 +29,10 @@ func (m *FakeMemoryStore) Get() map[string][]model.SensorReading {
 
 	return m.records
 }
+
+func (m *FakeMemoryStore) GetSummary() map[string]any {
+	return map[string]any{
+		"overall_average": "overallAverage",
+		"sensor_average":  "sensorAverage",
+	}
+}

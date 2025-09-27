@@ -12,12 +12,6 @@ go run .\cmd\api\main.go
 
 ## Curl Examples
 
-### Health Route
-
-```sh
-curl http://localhost:8080/health
-```
-
 ### Temprature POST Route
 
 ```sh
@@ -34,11 +28,11 @@ curl -X POST http://localhost:8080/temperature \
 ```sh
 curl -X POST http://localhost:8080/temperature \
   -H "Content-Type: application/json" \
-  -H "x-authorization-key: 586cfd2c3c1a6303a919cc8cecb1c8ad3bfd6da999829a6bfe7b086a5f26b8e0:1758982351" \
+  -H "x-authorization-key: 586cfd2c3c1a6303a919cc8cecb1c8ad3bfd6da999829a6bfe7b086a5f26b8e0:1758991886" \
   -d '{
-    "sensor_id": "sensor123",
+    "sensor_id": "sensor49",
     "timestamp": "2025-01-27T10:00:00Z",
-    "temperature": 25.5
+    "temperature": 30
   }'
 ```
 

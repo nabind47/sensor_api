@@ -13,13 +13,17 @@ import (
 func New(cfg *config.Config) *http.ServeMux {
 	mux := http.NewServeMux()
 
-	repo := storage.NewMemoryStore()
+	// repo := storage.NewMemoryStore()
 	// repo := storage.NewFakeMemoryStore()
+	repo := storage.NewInMemoryStore()
 	srv := service.NewTemperatureService(repo)
 	authMW := middleware.NewAuth(&cfg.Auth)
 
 	handler := handler.NewSensorHandler(srv)
 
+	// mux.HandleFunc("GET /sensors", handler.GetSensors)
+
+	// mux.HandleFunc("GET /temperature", handler.GetTemprature)
 	mux.HandleFunc("GET /temperature", handler.GetSensors)
 	mux.Handle("POST /temperature", authMW.AuthMiddleware(http.HandlerFunc(handler.CreateSensor)))
 

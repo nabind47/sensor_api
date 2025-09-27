@@ -16,11 +16,13 @@ func NewTemperatureService(repo storage.StoreInterface) *TemperatureService {
 func (s *TemperatureService) CreateReading(reading model.SensorReading) (model.SensorReading, error) {
 	return s.repo.Create(reading)
 }
-
 func (s *TemperatureService) GetReadings() model.SensorSummary {
 	readings := s.repo.Get()
 
 	return CalculateReadings(readings)
+}
+func (s *TemperatureService) GetSummary() map[string]any {
+	return s.repo.GetSummary()
 }
 
 func CalculateReadings(readings map[string][]model.SensorReading) model.SensorSummary {

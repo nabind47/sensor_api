@@ -29,3 +29,7 @@ func (m *MemoryStore) Get() map[string][]model.SensorReading {
 
 	return m.data
 }
+
+func (m *MemoryStore) GetSummary() map[string]any {
+	return nil
+}

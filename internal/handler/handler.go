@@ -44,6 +44,12 @@ func (h *SensorHandler) CreateSensor(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *SensorHandler) GetSensors(w http.ResponseWriter, r *http.Request) {
+	readings := h.service.GetSummary()
+
+	util.WriteSuccess(w, http.StatusOK, readings)
+}
+
+func (h *SensorHandler) GetTemprature(w http.ResponseWriter, r *http.Request) {
 	readings := h.service.GetReadings()
 
 	util.WriteSuccess(w, http.StatusOK, readings)

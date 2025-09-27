@@ -1,0 +1,10 @@
+.vscode/
+
+bin/
+*.exe
+
+.env
+scripts/
+
+.air.toml
+

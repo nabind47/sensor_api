@@ -88,3 +88,13 @@ curl -X GET http://localhost:8080/temperature
   }
 }
 ```
+
+## Tests
+
+```sh
+go test ./...
+
+go test -v ./...
+
+go test -cover ./...
+```

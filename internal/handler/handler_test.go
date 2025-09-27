@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/go-playground/assert/v2"
 	"github.com/nabind47/sensor_api/internal/config"
@@ -56,6 +57,7 @@ func TestCreateSensor(t *testing.T) {
 			name:           "empty body",
 			body:           `{}`,
 			setAuth:        true,
+			invalidAuth:    false,
 			expectedStatus: http.StatusBadRequest,
 		},
 		{
@@ -179,13 +181,14 @@ func TestCreateSensor(t *testing.T) {
 			fakeAuthCfg := &config.AuthConfig{
 				ClientID:     "AUTH_CLIENT_ID",
 				ClientSecret: "AUTH_CLIENT_SECRET",
+				ClientExpiry: time.Duration(120) * time.Second,
 			}
 
 			repo := &fakeRepo{}
 			svc := service.NewTemperatureService(repo)
 			h := handler.NewSensorHandler(svc)
 
-			req := httptest.NewRequest(http.MethodPost, "/sensors", bytes.NewBufferString(tc.body))
+			req := httptest.NewRequest(http.MethodPost, "/temprature", bytes.NewBufferString(tc.body))
 			req.Header.Set("Content-Type", "application/json")
 
 			if tc.setAuth {

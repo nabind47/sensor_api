@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/nabind47/sensor_api/internal/config"
@@ -18,6 +19,8 @@ func NewAuth(cfg *config.AuthConfig) *Auth {
 func (a *Auth) AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		token := r.Header.Get("x-authorization-key")
+
+		fmt.Printf("token %v", token)
 
 		if token == "" {
 			util.WriteError(w, http.StatusForbidden, "forbidden")

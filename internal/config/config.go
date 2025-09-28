@@ -80,7 +80,7 @@ func Load() (*Config, error) {
 			Env: GetString("APP_ENV", "development"),
 		},
 		Server: ServerConfig{
-			Port:               GetInt("SERVER_PORT", 8080),
+			Port:               GetInt("PORT", 8080),
 			ReadTimeout:        GetInt("SERVER_READ_TIMEOUT", 10),
 			WriteTimeout:       GetInt("SERVER_WRITE_TIMEOUT", 10),
 			IdleTimeout:        GetInt("SERVER_IDLE_TIMEOUT", 30),
